@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:html' as html;
 import 'dart:ui' as ui;
 
@@ -52,18 +53,21 @@ class EasyWebView extends StatefulWidget implements EasyWebViewImpl {
   final bool widgetsTextSelectable;
 
   @override
-  final void Function() onLoaded;
+  final void Function(String url) onLoaded;
 }
 
 class _EasyWebViewState extends State<EasyWebView> {
   @override
   void initState() {
-    widget?.onLoaded();
+    print('onloaded 1');
+    widget?.onLoaded('');
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final _iframe = _iframeElementMap[widget.key];
       _iframe.onLoad.listen((event) {
         if (widget?.onLoaded != null) {
-          widget.onLoaded();
+          print('onloaded A ${_iframe.src}');
+         // print('onloaded 2 ${json.decode(event.toString())}');
+          widget.onLoaded('');
         }
       });
     });

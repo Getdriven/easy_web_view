@@ -14,7 +14,7 @@ class EasyWebViewImpl {
   final bool convertToWidgets;
   final Map<String, String> headers;
   final bool widgetsTextSelectable;
-  final void Function() onLoaded;
+  final void Function(String url) onLoaded;
 
   EasyWebViewImpl({
     @required this.src,

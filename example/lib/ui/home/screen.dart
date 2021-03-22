@@ -7,7 +7,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String src = 'https://flutter.dev';
+  String src =  'https://www.linkedin.com/oauth/v2/authorization?'
+      'client_id=77a7y8dn11mnsv&'
+      'client_secret=lpZFjJe2q12fg9ix&'
+      'response_type=code&'
+      'state=DCEeFWf45A53sdfKef424&'
+      'scope=r_liteprofile%20r_emailaddress&'
+      'redirect_uri=https://getdriven.app/signin-linkedin';
   String src2 = 'https://flutter.dev/community';
   String src3 = 'http://www.youtube.com/embed/IyFZznAk69U';
   static ValueKey key = ValueKey('key_0');
@@ -118,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           flex: 1,
                           child: EasyWebView(
                               src: src,
-                              onLoaded: () {
+                              onLoaded: (String url) {
                                 print('$key: Loaded: $src');
                               },
                               isHtml: _isHtml,
@@ -128,48 +134,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               // width: 100,
                               // height: 100,
                               )),
-                      Expanded(
-                        flex: 1,
-                        child: EasyWebView(
-                            onLoaded: () {
-                              print('$key2: Loaded: $src2');
-                            },
-                            src: src2,
-                            isHtml: _isHtml,
-                            isMarkdown: _isMarkdown,
-                            convertToWidgets: _useWidgets,
-                            key: key2
-                            // width: 100,
-                            // height: 100,
-                            ),
-                      ),
+
                     ],
                   ),
-                  Column(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 3,
-                        child: Container(),
-                      ),
-                      Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: (open) ? 500 : 0,
-                            child: EasyWebView(
-                                src: src3,
-                                onLoaded: () {
-                                  print('$key3: Loaded: $src3');
-                                },
-                                isHtml: _isHtml,
-                                isMarkdown: _isMarkdown,
-                                convertToWidgets: _useWidgets,
-                                key: key3
-                                // width: 100,
-                                // height: 100,
-                                ),
-                          )),
-                    ],
-                  )
+
                 ],
               ));
   }

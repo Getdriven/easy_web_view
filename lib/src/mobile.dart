@@ -50,7 +50,7 @@ class EasyWebView extends StatefulWidget implements EasyWebViewImpl {
   final bool widgetsTextSelectable;
 
   @override
-  final void Function() onLoaded;
+  final void Function(String url) onLoaded;
 }
 
 class _EasyWebViewState extends State<EasyWebView> {
